@@ -1,0 +1,89 @@
+\section{Introduction}\label{sec:intro}
+
+A partition of $n$ into distinct parts is a \emph{non-Rascoe partition} if its
+number of parts is not itself one of the parts. Let $b(n)$ be the number of
+non-Rascoe partitions of $n$, and let $b_1(n)$ be the number of partitions of
+$n$ into distinct parts in which the number of parts plus one is not a part.
+The empty partition gives $b(0)=b_1(0)=1$. For example, the partitions of $5$
+into distinct parts are $5$, $4+1$ and $3+2$; the first contains its number of
+parts, so $b(5)=2$. These functions were introduced by Dixit, Kumar and
+Srivastava \cite{DKS}, who related them to Rogers--Ramanujan series and
+conjectured that $b(29k+21)\equiv0\pmod4$ for $k\ge1$, $29\nmid k$
+\cite[Conjecture~1]{DKS}. We prove this conjecture as a special case of the
+following criterion. For a prime $p$ and a positive integer $D$, $v_p(D)$
+denotes the exponent of $p$ in $D$.
+
+\begin{theorem}\label{thm:main-valuation}
+Let $p$ be a prime with $p\equiv21$ or $29\pmod{40}$, and let $n\ge0$. Then
+\[
+  v_p(40n+1)\ \text{odd}\ \Longrightarrow\ b(n)\equiv0\pmod4,\qquad
+  v_p(40n+9)\ \text{odd}\ \Longrightarrow\ b_1(n)\equiv0\pmod4.
+\]
+In particular,
+\begin{align*}
+  b(29k+21)&\equiv0\pmod4&&(k\ge1,\ 29\nmid k),\\
+  b_1(29k+15)&\equiv0\pmod4&&(k\ge0,\ k\not\equiv6\pmod{29}).
+\end{align*}
+\end{theorem}
+
+For the prime $29$ we also obtain exact scaling relations, with no condition
+on $n$.
+
+\begin{theorem}\label{thm:main-scaling}
+For every integer $n\ge0$,
+\begin{align}
+  b(841n+21)+b(n)&\equiv0\pmod4,\label{eq:scaling-b}\\
+  b_1(841n+189)+b_1(n)&\equiv0\pmod4.\label{eq:scaling-b1}
+\end{align}
+\end{theorem}
+
+For $n\ge1$, congruence \eqref{eq:scaling-b} is Cuthbertson's Conjecture~5.2
+\cite{Cuthbertson}; the case $n=0$ also holds. Congruence \eqref{eq:scaling-b1}
+is the companion statement for $b_1$. For every prime in \cref{thm:main-valuation},
+\cref{cor:scaling-nonsquare} gives a similar scaling relation, provided the
+associated number $40n+1$ or $40n+9$ is not a perfect square.
+
+\subsection*{The cone count}
+Both partition functions are controlled modulo $4$ by the following lattice
+point count. For a positive integer $D\equiv1$ or $9\pmod{40}$ let
+\[
+  C(D)=\#\{(x,u,v)\in\Z_{>0}^3:\ 10u<x,\ x^2+40uv=D\},
+\]
+and put $C(D)=0$ if $D$ is not a positive integer. The equation forces
+$x\equiv\pm1\pmod{10}$ if $D\equiv1\pmod{40}$ and $x\equiv\pm3\pmod{10}$ if
+$D\equiv9\pmod{40}$.
+
+\begin{theorem}\label{thm:cone-parity}
+Let $p\equiv21$ or $29\pmod{40}$ be prime. If $D$ is a positive integer that is
+not a perfect square, $D\equiv1$ or $9\pmod{40}$, and $p\mid D$, then
+\begin{equation}\label{eq:cone-parity}
+  C(D)\equiv C(D/p^2)\pmod2 .
+\end{equation}
+Consequently $C(D)$ is even whenever $v_p(D)$ is odd.
+\end{theorem}
+
+\subsection*{How the proof goes}
+\Cref{sec:reduction} reduces the generating functions of $b$ and $b_1$ modulo $4$
+to a Hecke--Rogers series, whose coefficients vanish at the relevant indices,
+plus twice the generating function of $C$. So everything comes down to the
+parity of $C(D)$.
+
+For nonsquare $D$ (\cref{sec:involution,sec:certificate,sec:nonsquare}) we
+enlarge the cone to the finite set of positive solutions of $x^2+2yz=D$. This
+set carries Jackson's involution, a coordinate swap, and two rescalings, and a
+sign built from the Legendre symbol modulo $p$ changes in a controlled way
+under each of them. A finite identity, valid at every point of the set,
+expresses the indicator of the cone as a sum of terms that cancel in pairs
+under these maps. The identity depends only on residues modulo $20$ and $200$
+and on finitely many linear inequalities, so it can be checked completely by
+computer; the data and the checking program are part of the proof.
+
+For square $D$, Jackson's involution has fixed boundaries and the argument
+breaks down. Instead (\cref{sec:divisor,sec:recurrence,sec:scaling}) we write
+$C(r^2)$ through a divisor sum, express that sum with Lambert series, and reduce
+the problem at $p=29$ to the vanishing modulo $2$ of an explicit modular form of
+weight two. Sturm's theorem reduces this to finitely many coefficients, which
+are computed exactly.
+
+\Cref{sec:verification} explains how to run the two computer verifications,
+whose programs are printed in the appendices.

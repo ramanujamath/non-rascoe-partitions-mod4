@@ -1,0 +1,3 @@
+Verified all five branch maps: norm, positivity, branch image, and inverse.
+Independently enumerated 263 geometric signatures, including boundaries.
+Verified 1156160 pointwise identities; 272960 boundary-signature checks; 5485 nonzero entries; 6.69 seconds.

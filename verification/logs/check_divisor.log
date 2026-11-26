@@ -1,0 +1,40 @@
+
+== Proposition 6.1
+  [ok]   A_m = sum_(d|m) gamma(d) and gamma(m) = sum mu(d) A_(m/d) for all odd m < 2001 coprime to 5
+
+== Proposition 6.2 (exact)
+  [ok]   P_j = sum_(d = j mod 10) U_d (alternative definition)
+  [ok]   P_(2j) = T_j + T_(j+5) - T_(2j) for 1 <= j <= 5
+  [ok]   A_odd = U5 V + U V5 - F5 - G5 exactly (n < 2001)
+
+== Proposition 6.3
+  [ok]   Table 2: 2w(m,s) = 1[5 does not divide ms] + Delta(m,2s) + (-1)^s Delta(m,s)
+  [ok]   F5 + G5 = generating function of w(m,s) q^(mr+2st) (mod 2)
+  [ok]   K5(N) - Q(N) is even (odd N coprime to 5, N < 2000)
+  [ok]   (11): A_N = R(N) + (K5(N) - Q(N))/2 (mod 2)
+  [ok]   integer identity 2W(N) = K5(N) - Q(N) (odd N < 400 coprime to 5)
+  [ok]   Q(N) = J(N) + 2H_5(N) - 3H_10(N), J = (sigma - tau)/2
+  [ok]   S6 = 0, S8 = J - H5, S10 = J - H10 (Liouville-type identities, odd N < 160 coprime to 5)
+
+== Characters of Section 7 and the congruence (12)
+  [ok]   2 has order 28 modulo 29 (so lambda(2) = i determines lambda)
+  [ok]   lambda(-1) = -1, lambda(5) = -1, lambda^2 = (./29)
+  [ok]   (12): if (n/29) = -1 then d5(n) is even and d5(n)/2 = [q^n]E (mod 2), n < 30000
+
+== Theorem 7.1 (FFT, odd N divisible by 29, N < 2.1e6)
+  [ok]   FFT convolution agrees with the direct K5 for odd N < 400
+  [ok]   K5(N) - K5(N/29^2) = 2(nu5(m) + d5(m)) mod 4 for all 36207 odd N divisible by 29 below 2100000
+
+== Proposition 8.1 ingredients
+  [ok]   R(N) = #{N = 5x^2 + 2y^2 or x^2 + 10y^2, x odd, y >= 1} (mod 2), odd N < 2000 coprime to 5
+  [ok]   q0(d) mod 4 is periodic modulo 40
+  [ok]   q0(d) + q0(29d) = 2 (mod 4) on the 16 unit classes mod 40
+  [ok]   Q(N) - Q(N/29^2) = 2 tau(m) (mod 4) for odd N < 2e5 divisible by 29, coprime to 5
+
+== Theorem 8.2
+  [ok]   gamma(29r) + gamma(r) = 1[r = 2,3 mod 5] (mod 2) for all 138 odd r <= 345 coprime to 5
+
+== Index and Sturm bound
+  [ok]   [SL2(Z):Gamma_0(4640)] = 8640, index 276480, Sturm bound 46080, expansion length 1336320
+
+-- check_divisor: 22 passed, 0 failed

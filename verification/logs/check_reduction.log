@@ -1,0 +1,21 @@
+
+== Series identities
+  [ok]   P_inf/Q_inf = 1 + 2L (mod 4)
+  [ok]   H_0: Q_inf sum q^(r(r+l))/(-q;q)_r agrees with the Hecke-Rogers series (7) (mod 64, n < 2500)
+  [ok]   H_0 = T_0 (mod 2)
+  [ok]   (4): B_0 = H_0 + 2 T_0 L + 2 M_0 (mod 4)
+  [ok]   (5): [q^n] C_0 = C(40n + 1) for n < 2500
+  [ok]   Proposition 2.1: B_0 = H_0 + 2 C_0 (mod 4)
+  [ok]   [q^n] H_0 = 0 and [q^n] U = 0 when v_p(40n + 1) is odd (p = 29, 61, 101, 109)
+  [ok]   H_1: Q_inf sum q^(r(r+l))/(-q;q)_r agrees with the Hecke-Rogers series (7) (mod 64, n < 2500)
+  [ok]   H_1 = T_1 (mod 2)
+  [ok]   (4): B_1 = H_1 + 2 T_1 L + 2 M_1 (mod 4)
+  [ok]   (5): [q^n] C_1 = C(40n + 9) for n < 2500
+  [ok]   Proposition 2.1: B_1 = H_1 + 2 C_1 + 2U (mod 4)
+  [ok]   [q^n] H_1 = 0 and [q^n] U = 0 when v_p(40n + 9) is odd (p = 29, 61, 101, 109)
+
+== Legendre symbols
+  [ok]   (10/p) = -1, chi(-1) = 1, chi(2) = -1, chi(5) = 1 for all 54 primes p = 21, 29 mod 40 below 3000
+  [ok]   (-2/p) = (-10/p) = -1 for the same primes
+
+-- check_reduction: 15 passed, 0 failed

@@ -1,0 +1,64 @@
+\section{Proofs for nonsquare discriminants}\label{sec:nonsquare}
+
+\begin{proof}[Proof of \cref{thm:cone-parity}]
+First let $D\equiv1\pmod{40}$, and sum \eqref{eq:cancellation} over the finite
+set $\Tset_p(D)$. The two $\Jk$-terms cancel because $\Jk$ permutes the set, and
+the two $\Sw$-terms cancel for the same reason. For $\ell=2,5$, $A_\ell$ is a
+bijection from $\{t:\ell\mid y\}$ onto $\{t:\ell\mid z\}$, so
+$\sum_{\ell\mid z}F_\ell(t)=\sum_{\ell\mid y}F_\ell(A_\ell t)$ and these terms cancel too.
+Hence the number of triples in $\Tset_p(D)$ with $2y<x$, $5\mid y$ and $4\mid z$ is
+even.
+
+If $D\equiv9\pmod{40}$, define $\Tset_p(D)$ by the same formula. For
+$t\in\Tset_p(D)$ the triple $3t$ lies in $\Tset_p(9D)$ (as $p\ne3$), and
+$9D\equiv1\pmod{40}$ is again a nonsquare divisible by $p$. Apply
+\eqref{eq:cancellation} to $3t$ and sum over $t\in\Tset_p(D)$. All the maps
+commute with multiplication by $3$, their domains are unchanged, and the
+indicator on the left is unchanged because $3$ is prime to $20$. So the same
+count is even in this case too.
+
+Now put $y=5u$ and $z=4v$. The marked triples are exactly the triples counted by
+$C(D)$ for which $p$ does not divide all of $x,u,v$. The triples with $p$
+dividing all three are in bijection, by division by $p$, with those counted by
+$C(D/p^2)$: the inequality $10u<x$ is preserved, and $p^2\equiv1\pmod{40}$ keeps
+$D/p^2$ in the same class. (If $p^2\nmid D$ there are no such triples.) This
+proves \eqref{eq:cone-parity}. Repeated division by $p^2$ reduces an odd
+valuation to $1$, which gives the last assertion.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:main-valuation}]
+An odd valuation makes $40n+(2\ell+1)^2$ a nonsquare. Apply
+\cref{prop:reduction} and \cref{thm:cone-parity}. For the two progressions use
+\[
+  40(29k+21)+1=29(40k+29),\qquad 40(29k+15)+9=29(40k+21);
+\]
+the valuation is exactly $1$ when $29\nmid k$, respectively when
+$k\not\equiv6\pmod{29}$.
+\end{proof}
+
+\begin{corollary}\label{cor:scaling-nonsquare}
+Let $p\equiv21$ or $29\pmod{40}$ be prime, let $\ell\in\{0,1\}$ and $n\ge0$, and
+suppose $40n+(2\ell+1)^2$ is not a perfect square. Then
+\[
+  b_\ell\Bigl(p^2n+\frac{(2\ell+1)^2(p^2-1)}{40}\Bigr)\equiv s_p\,b_\ell(n)\pmod4,\qquad
+  s_p=\begin{cases}1,&p\equiv1\pmod{10},\\-1,&p\equiv9\pmod{10}.\end{cases}
+\]
+\end{corollary}
+
+\begin{proof}
+The new index $n'$ satisfies $40n'+(2\ell+1)^2=p^2\bigl(40n+(2\ell+1)^2\bigr)$. In
+\eqref{eq:hecke-rogers}, divisibility of $x^2-40j^2$ by $p$ forces $p\mid x$ and
+$p\mid j$; substituting $x=s_ppX$, $j=pj'$ preserves the residue condition
+$x\equiv2\ell+1\pmod{10}$ and the cone condition, multiplies the sign by $s_p$,
+and leaves $(-1)^j$ unchanged since $p$ is odd. So $h_\ell(n')=s_ph_\ell(n)$.
+\Cref{thm:cone-parity} gives $C$ at the new discriminant $\equiv C$ at the old one
+modulo $2$. For $\ell=1$, both coefficients of $U$ vanish because both
+discriminants are nonsquares. Now apply \cref{prop:reduction}.
+\end{proof}
+
+\begin{remark}
+The nonsquare hypothesis is needed in general: numerically, the relation of
+\cref{cor:scaling-nonsquare} fails at square discriminants for $p=61$ and
+$p=109$. For $p=29$ it does hold at squares, which is the content of
+\cref{thm:main-scaling} and \cref{sec:divisor,sec:recurrence,sec:scaling}.
+\end{remark}

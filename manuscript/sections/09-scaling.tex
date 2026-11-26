@@ -1,0 +1,68 @@
+\section{The scaling congruences}\label{sec:scaling}
+
+We keep $p=29$ and transfer \cref{thm:K5-recurrence} to the divisor transform of
+\cref{prop:divisor-transform}.
+
+\begin{proposition}\label{prop:A-recurrence}
+For every positive odd $N$ prime to $5$ and divisible by $p$,
+\[
+  A_N-A_{N/p^2}\equiv\nu_5(m)\pmod2,\qquad m=N/p^{v_p(N)} .
+\]
+\end{proposition}
+
+\begin{proof}
+By \cref{prop:K5-reduction}, $A_N\equiv R(N)+\frac12(K_5(N)-Q(N))\pmod2$ for every
+positive odd $N$ prime to $5$. Modulo $2$, $R(N)$ counts the representations
+$N=5x^2+2y^2$ and $N=x^2+10y^2$ with $x$ odd and $x,y>0$. Since $\Leg{-10}p=-1$, a
+representation with $p\mid N$ forces $p\mid x$ and $p\mid y$, and division by $p$ gives
+$R(N)\equiv R(N/p^2)\pmod2$.
+
+For odd $d$ prime to $5$, $q_0(d)\bmod4$ depends only on $d\bmod40$, and evaluating
+the $16$ unit classes gives $q_0(d)+q_0(29d)\equiv2\pmod4$. Since
+$p^2\equiv1\pmod{40}$, the two top $p$-power layers of divisors give
+$Q(N)-Q(N/p^2)\equiv2\tau(m)\pmod4$.
+
+Subtract the two formulas for $A$ and apply \cref{thm:K5-recurrence}. As $5\nmid m$,
+$d_5(m)=\tau(m)$, these terms cancel, and $\nu_5(m)$ remains.
+\end{proof}
+
+\begin{theorem}\label{thm:gamma-scaling}
+For every positive odd integer $r$ prime to $5$,
+\[
+  \gamma(29r)+\gamma(r)\equiv\begin{cases}0\pmod2,&r\equiv1,4\pmod5,\\1\pmod2,&r\equiv2,3\pmod5.\end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+Write $r=p^jm$ with $p\nmid m$. M\"obius inversion in \cref{prop:divisor-transform}
+gives the exact identities
+\begin{align*}
+  \gamma(pm)+\gamma(m)&=\sum_{d\mid m}\mu(d)A_{pm/d},\\
+  \gamma(p^{j+1}m)+\gamma(p^jm)&=\sum_{d\mid m}\mu(d)\bigl(A_{p^{j+1}m/d}-A_{p^{j-1}m/d}\bigr)\qquad(j\ge1);
+\end{align*}
+for the first, split the divisors of $pm$ into $d$ and $pd$ with $d\mid m$, and
+for the second add the formulas for $\gamma(p^{j+1}m)$ and $\gamma(p^jm)$, which
+telescope.
+By \cref{prop:A-recurrence} either right side is $\sum_{d\mid m}\mu(d)\nu_5(m/d)$
+modulo $2$. By definition $\nu_5=\one*\one_{\{2,3\bmod5\}}$, so M\"obius inversion
+identifies this sum with $\one_{m\equiv2,3\ (5)}$. Multiplication by $29$ preserves the
+set of nonresidues modulo $5$, so this equals $\one_{r\equiv2,3\ (5)}$.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:main-scaling}]
+\Cref{cor:scaling-nonsquare} proves each congruence when the associated number
+$40n+(2\ell+1)^2$ is not a square. Suppose $40n+1=r^2$ with $r>0$. Then
+$r\equiv1,9\pmod{10}$, so \cref{thm:gamma-scaling} gives
+$C((29r)^2)+C(r^2)\equiv0\pmod2$. The substitution in the proof of
+\cref{cor:scaling-nonsquare}, applied to \eqref{eq:hecke-rogers}, also gives
+$h_0(841n+21)=-h_0(n)$ at square discriminants. \Cref{prop:reduction} now proves
+\eqref{eq:scaling-b}.
+
+If $40n+9=r^2$, then $r\equiv3,7\pmod{10}$, and \cref{thm:gamma-scaling} gives
+$C((29r)^2)+C(r^2)\equiv1\pmod2$; again $h_1(841n+189)=-h_1(n)$. Write
+$u(n)=\coef nU$. The exponents of $U$ are the $n$ with $40n+9=(10a+7)^2$, $a\ge0$.
+Multiplication by $29$ exchanges the classes $3$ and $7$ modulo $10$, so exactly one of
+$r$, $29r$ is $\equiv7\pmod{10}$ and $u(841n+189)+u(n)=1$. So the two correction terms
+$2C_1+2U$ in $B_1\equiv H_1+2C_1+2U\pmod4$ together contribute $2\cdot1+2\cdot1\equiv0$
+to the sum, and \eqref{eq:scaling-b1} follows.
+\end{proof}

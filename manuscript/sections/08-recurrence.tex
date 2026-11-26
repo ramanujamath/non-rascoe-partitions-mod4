@@ -1,0 +1,211 @@
+\section{A recurrence for the convolution at 29}\label{sec:recurrence}
+
+Throughout this section $p=29$. For a positive integer $N$ divisible by $p$ write
+$N=p^em$ with $e=v_p(N)\ge1$ and $p\nmid m$.
+
+\begin{theorem}\label{thm:K5-recurrence}
+For every positive odd integer $N$ divisible by $p$,
+\[
+  K_5(N)-K_5(N/p^2)\equiv2\bigl(\nu_5(m)+d_5(m)\bigr)\pmod4,\qquad m=N/p^{v_p(N)} .
+\]
+\end{theorem}
+
+The proof builds an integral modular form whose coefficients at multiples of $p$
+measure the failure of this congruence, and shows that it vanishes modulo $2$ by
+Sturm's theorem.
+
+\subsection{Characters, theta series and Eisenstein series}
+Let $\psi$ be the quartic character modulo $5$ with
+$\psi(1)=1$, $\psi(2)=i$, $\psi(3)=-i$, $\psi(4)=-1$. Let $\chi_4(n)=(-1)^{(n-1)/2}$ for
+odd $n$ (and $0$ for even $n$), and let $\chi_8$ be the character modulo $8$ with
+$\chi_8(1)=\chi_8(7)=1$, $\chi_8(3)=\chi_8(5)=-1$. Let $\lambda$ be the quartic character
+modulo $p$ with $\lambda(2)=i$; since $2$ has order $28$ modulo $29$, this determines
+$\lambda$, and
+\[
+  \lambda(-1)=-1,\qquad \lambda(5)=-1,\qquad \lambda^2(a)=\Leg a{29}.
+\]
+For $d\ge1$ define the theta series
+\[
+  \theta_d=\sum_{a\in\Z}q^{da^2},\qquad
+  \theta^+_d=\sum_{a\ge1}q^{da^2},\qquad
+  \theta^{\mathrm{odd}}_d=\sum_{a\ge1,\ a\ \mathrm{odd}}q^{da^2}=\frac{\theta_d-\theta_{4d}}2 .
+\]
+For $\rho\in\{\psi,\ol\psi,\lambda,\ol\lambda\}$ let $E^\rho$ be the weight-one
+Eisenstein series of \cref{fact:eisenstein} (each $\rho$ is odd and primitive), and put
+\[
+  E_R=\frac{E^\lambda+E^{\ol\lambda}}2,\qquad E_I=\frac{E^\psi-E^{\ol\psi}}{2i},
+\]
+taking real and imaginary parts of the coefficients.
+
+\subsection{A quartic-character lift}
+Put
+\[
+  E(q)=E_R(q)+E_R(q^5)-E_R(q^p)-E_R(q^{5p}).
+\]
+Its constant term is $0$. Since $\lambda(p)=0$ and $\lambda(5)=-1$, its coefficients are
+the integers
+\[
+  \coef nE=\begin{cases}\operatorname{Re}\sum_{d\mid n,\ 5\nmid d}\lambda(d),&p\nmid n,\\ 0,&p\mid n.\end{cases}
+\]
+If $\Leg n{29}=-1$, then $d_5(n)$ is even and
+\begin{equation}\label{eq:d5-half}
+  \frac{d_5(n)}2\equiv\coef nE\pmod2 .
+\end{equation}
+Indeed, in each pair of complementary divisors $d,n/d$ exactly one value of
+$\lambda$ is real ($\pm1$) and the other imaginary, since
+$\lambda^2(d)\lambda^2(n/d)=\Leg n{29}=-1$. So $\tau(n)$ is even and $\tau(n)/2$ has the
+parity of $\operatorname{Re}\sum_{d\mid n}\lambda(d)$. If $5\mid n$, apply this also to
+$n/5$ (still a nonresidue, as $\Leg5{29}=1$) and subtract, using
+$d_5(n)=\tau(n)-\tau(n/5)$.
+
+Write $F_o$ for the odd part of a series (\cref{sec:notation}). Define
+\[
+  \Omega_d=\theta^{\mathrm{odd}}_d+\theta^{\mathrm{odd}}_{5d},\qquad
+  \vartheta_d=\frac{\theta_{2d}-\theta_{10d}}2=\theta^+_{2d}-\theta^+_{10d},\qquad
+  X=\Omega_1-\Omega_{p^2},
+\]
+all with integer coefficients, and
+\[
+  \mathcal R=\Omega_{p^2}\vartheta_p+\Omega_p\vartheta_{p^2},\qquad
+  \mathcal M=X\,E(q^2)+(\vartheta_1-\vartheta_{p^2})E_o+\mathcal R .
+\]
+
+\subsection{The convolution difference}
+We claim that for every positive odd $N$ divisible by $p$,
+\begin{equation}\label{eq:conv-diff}
+  \frac{K_5(N)-K_5(N/p^2)}2\equiv\coef N\mathcal M\pmod2 ;
+\end{equation}
+in particular the numerator is even. To avoid dividing a congruence by $2$, let
+\[
+  \mathcal D=\sum_{n\ge1}d_5(n)q^n,\qquad
+  \mathcal D_0=\sum_{p\nmid n}d_5(n)q^n,\qquad
+  \mathcal Z=\sum_{p\mid n}d_5\bigl(n/p^{v_p(n)}\bigr)q^n .
+\]
+Since $d_5(p^em)=(e+1)d_5(m)$ for $p\nmid m$, we have the exact identity
+$\mathcal D(q)-\mathcal D(q^{p^2})=\mathcal D_0(q)+2\mathcal Z(q)$.
+
+The generating function of $K_5(N)$ at odd $N$ is $\mathcal D_o(q)\mathcal D(q^2)$.
+Expand the difference between it and its image under $q\mapsto q^{p^2}$ using the
+identity just stated. At exponents divisible by $p$, a product of a factor
+supported on multiples of $p$ with one supported away from multiples of $p$
+contributes nothing. So, modulo $4$, at such exponents the difference has the
+same coefficients as
+\[
+  \mathcal D_{0,o}(q)\mathcal D_0(q^2)+2\mathcal Z_o(q)\mathcal D(q^{2p^2})+2\mathcal D_o(q^{p^2})\mathcal Z(q^2).
+\]
+In the first product, no term at an exponent divisible by $p$ has both divisor
+counts odd: $d_5(n)$ is odd only when $n$ is a square or five times a square, so
+such an exponent would be one of $x^2+2y^2$, $x^2+10y^2$, $5x^2+2y^2$,
+$5x^2+10y^2$ with $p\nmid xy$, which is impossible because
+$\Leg{-2}p=\Leg{-10}p=-1$. So its coefficient is even, and modulo $4$ only terms
+with exactly one odd divisor count contribute. The odd factor is supported on
+squares or five times squares; the argument of the other factor is then a
+nonresidue modulo $p$, so \eqref{eq:d5-half} applies to it. This shows that half
+of the first product, at the stated exponents, has the parity of
+$\coef N\bigl(X\,E(q^2)+(\vartheta_1-\vartheta_{p^2})E_o\bigr)$; here
+$\theta^+_{2d}+\theta^+_{10d}\equiv\vartheta_d\pmod2$ accounts for the theta differences.
+
+For the other two products, pairing complementary divisors gives
+\[
+  \mathcal D\equiv\theta^+_1+\theta^+_5,\qquad
+  \mathcal Z\equiv\theta^+_p+\theta^+_{5p}+\theta^+_{p^2}+\theta^+_{5p^2}\pmod2 ,
+\]
+the second separating odd and positive even valuations at $p$. Taking odd parts
+and substituting, the two equal terms $\Omega_{p^2}(\theta^+_{2p^2}+\theta^+_{10p^2})$
+cancel modulo $2$, and what remains is $\mathcal R$. This proves \eqref{eq:conv-diff}.
+
+\subsection{An integral form of weight two}
+Put
+\[
+  \mathcal N=(E_I)_o(q^p)+(E_I)_o(q^{p^2}),\qquad \mathcal Y=\Omega_p+\Omega_{p^2}.
+\]
+For odd $N=p^em$ with $p\nmid m$,
+\[
+  \coef N\mathcal N\equiv\nu_5(m),\qquad \coef N\mathcal Y\equiv d_5(m)\pmod2 .
+\]
+For the first: $\coef nE_I\equiv\nu_5(n)\pmod2$, and
+$\nu_5(p^am)=(a+1)\nu_5(m)$ because multiplication by $p\equiv4\pmod5$ permutes the
+two classes $2,3$ modulo $5$; the two shifted series contribute
+$e\,\nu_5(m)+(e-1)\nu_5(m)$ (the second term absent for $e=1$). The second again
+separates odd and positive even valuations at $p$. Define
+\[
+  \mathfrak F=\theta_{40}\bigl(X\,E(q^2)+(\vartheta_1-\vartheta_{p^2})E_o\bigr)
+  +\theta_{40}^2(\mathcal R-\mathcal N)-\theta_{40}^3\,\mathcal Y .
+\]
+Every coefficient of $\mathfrak F$ is an integer: the constant term of $E$ is $0$,
+taking the odd part removes the constant term of $E_I$, and the theta differences
+$\vartheta_d$ have integer coefficients. Since $\theta_{40}\equiv1\pmod2$,
+\begin{equation}\label{eq:F-coefficients}
+  \coef N\mathfrak F\equiv\frac{K_5(N)-K_5(N/p^2)}2-\nu_5(m)-d_5(m)\pmod2
+  \qquad(p\mid N,\ N\ \mathrm{odd}).
+\end{equation}
+
+\subsection{Modularity and the Sturm bound}
+Define the even characters
+\[
+  \kappa_1=\chi_4\lambda,\qquad \kappa_2=\chi_4\psi,\qquad \kappa_3=\chi_8,
+\]
+of orders $4$, $4$ and $2$. Each summand of $\mathfrak F$ is a sum of weight-two
+products of theta series (\cref{fact:theta}) and Eisenstein series
+(\cref{fact:eisenstein}), holomorphic at every cusp, of level dividing $160p^2$ and
+with character in $\langle\kappa_1,\kappa_2,\kappa_3\rangle$; \cref{tab:characters}
+lists the characters ($a,b\in\{0,1\}$ independently).
+
+\begin{table}[ht]
+\caption{Characters of the weight-two constituents of $\mathfrak F$.}\label{tab:characters}
+\begin{tabular}{ll}
+\toprule
+summand & possible characters\\
+\midrule
+$\theta_{40}X\,E(q^2)$ & $\kappa_1^{\pm1}\kappa_3\kappa_2^{2a}$\\
+$\theta_{40}(\vartheta_1-\vartheta_{p^2})E_o$ & $\kappa_1^{\pm1}\kappa_2^{2a}$\\
+$\theta_{40}^2\mathcal R$ & $\kappa_1^2\kappa_3\kappa_2^{2a}$\\
+$\theta_{40}^2\mathcal N$ & $\kappa_2^{\pm1}$\\
+$\theta_{40}^3\mathcal Y$ & $\kappa_1^{2a}\kappa_3\kappa_2^{2b}$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Taking the odd part of a weight-one form of odd level $L$ gives a form of level
+$4L$ with the same character (write the projection using translation by $1/2$
+and conjugate on $\Gamma_0(4L)$), so the odd projections stay within the stated
+level bound.
+
+For a series $f=\sum a(n)q^n$ let $U_pf=\sum a(pn)q^n$; analytically
+$U_pf(z)=\frac1p\sum_{j=0}^{p-1}f\bigl(\frac{z+j}p\bigr)$. If $f$ has weight two, level
+$160p^2$ and one of the characters above, then $U_pf$ has level $160p$ and the same
+character. To see this, let $\gamma=\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\Gamma_0(160p)$,
+$M_j=\begin{pmatrix}1&j\\0&p\end{pmatrix}$, and choose $j'$ modulo $p$ with
+$j'\equiv a^{-1}(b+jd)\pmod p$. Then
+\[
+  M_j\gamma=\begin{pmatrix}a+jc&(b+jd-(a+jc)j')/p\\ pc&d-cj'\end{pmatrix}M_{j'} .
+\]
+The first matrix lies in $\Gamma_0(160p^2)$, its lower-right entry is congruent to
+$d$ modulo $40p$, and $j\mapsto j'$ is a permutation. Summing the transformation
+laws over $j$ proves the claim, because every character involved has conductor
+dividing $40p$; holomorphy at the cusps is preserved by this finite sum.
+
+Consequently $U_p\mathfrak F\in M_2(\Gamma_{29})\cap\Zq$, where
+\[
+  \Gamma_{29}=\Bigl\{\begin{pmatrix}a&b\\c&d\end{pmatrix}\in\Gamma_0(160p):
+  \kappa_1(d)=\kappa_2(d)=\kappa_3(d)=1\Bigr\}.
+\]
+The character map $d\mapsto(\kappa_1(d),\kappa_2(d),\kappa_3(d))$ has image of order
+$4\cdot4\cdot2=32$: by the Chinese remainder theorem the residues modulo $p$ and $5$
+prescribe $\kappa_1,\kappa_2$ independently, and the residue modulo $8$ prescribes
+$\kappa_3$. Hence
+\[
+  [SL_2(\Z):\Gamma_{29}]=32\cdot160p\Bigl(1+\frac12\Bigr)\Bigl(1+\frac15\Bigr)\Bigl(1+\frac1{29}\Bigr)=276480,
+\]
+and Sturm's bound (\cref{fact:sturm}) is $2\cdot276480/12=46080$.
+
+\begin{proof}[Proof of \cref{thm:K5-recurrence}]
+The program \texttt{prove\_square\_scaling\_29.py} (\cref{app:sturm}) computes
+$\mathfrak F$ modulo $2$ through degree $29\cdot46080=1\,336\,320$, using Python
+integers as bit vectors for polynomials over $\F_2$ (addition is exclusive-or,
+multiplication is shift-and-xor), so no rounding occurs. It checks that every
+coefficient of $U_{29}\mathfrak F$ through degree $46080$ is $0$ modulo $2$; the
+constant term is $0$, and all even coefficients vanish because $\mathfrak F$ is
+supported on odd exponents. By \cref{fact:sturm}, $U_{29}\mathfrak F\equiv0\pmod2$.
+Now \eqref{eq:F-coefficients} gives the theorem.
+\end{proof}

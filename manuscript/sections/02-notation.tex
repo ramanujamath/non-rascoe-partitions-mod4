@@ -1,0 +1,96 @@
+\section{Notation and standard facts}\label{sec:notation}
+
+\subsection{Power series and arithmetic functions}
+All power series have integer coefficients unless stated otherwise; $\Zq$ is the
+ring of such series, and congruences between series are meant coefficient by
+coefficient. For a series $F$, $\coef nF$ denotes the coefficient of $q^n$. We
+write
+\[
+  (a;q)_r=\prod_{j=0}^{r-1}(1-aq^j)\quad(r\ge0),\qquad
+  (a;q)_\infty=\prod_{j\ge0}(1-aq^j),
+\]
+with $(a;q)_0=1$. The \emph{odd part} of a series $F(q)$ is
+$F_o(q)=\tfrac12\bigl(F(q)-F(-q)\bigr)$.
+
+For an integer $N$, $\one_E$ is $1$ if the condition $E$ holds and $0$
+otherwise. For positive integers $n$:
+\begin{itemize}[leftmargin=2em]
+\item $\tau(n)$ is the number of divisors of $n$, $\sigma(n)$ their sum, and
+  $\mu$ is the M\"obius function;
+\item $d_5(n)=\#\{d\mid n:5\nmid d\}$ and
+  $\nu_5(n)=\#\{d\mid n:d\equiv2,3\pmod5\}$;
+\item $(f*g)(n)=\sum_{d\mid n}f(d)g(n/d)$ is Dirichlet convolution.
+\end{itemize}
+An arithmetic function evaluated at a positive non-integer is $0$. For an odd
+prime $p$, $\Leg ap$ is the Legendre symbol. Throughout, $p$ denotes a prime with
+$p\equiv21$ or $29\pmod{40}$. For such $p$,
+\begin{equation}\label{eq:legendre-values}
+  \Leg{-1}p=1,\qquad \Leg2p=-1,\qquad \Leg5p=1,\qquad\text{hence}\qquad
+  \Leg{10}p=\Leg{-2}p=\Leg{-10}p=-1 ,
+\end{equation}
+because $p\equiv5\pmod8$ and $p\equiv\pm1\pmod5$.
+
+\subsection{Modular forms}
+Write $q=e^{2\pi iz}$ with $z$ in the upper half-plane. For $L\ge1$,
+\[
+  \Gamma_0(L)=\Bigl\{\begin{pmatrix}a&b\\c&d\end{pmatrix}\in SL_2(\Z):L\mid c\Bigr\}.
+\]
+For a congruence subgroup $\Gamma$, $M_k(\Gamma)$ is the space of holomorphic
+modular forms of integral weight $k$ on $\Gamma$ (holomorphic at all cusps). A
+form of weight $k$ and character $\rho$ on $\Gamma_0(L)$ satisfies
+$f\bigl(\frac{az+b}{cz+d}\bigr)=\rho(d)(cz+d)^kf(z)$. Dirichlet characters are
+extended by $0$ to integers not coprime to their modulus, and $\ol\rho$ is the
+complex conjugate character.
+
+\subsection{Standard facts}
+
+\begin{fact}[Dixit--Kumar--Srivastava {\cite[Thms.~1.2 and 4.6]{DKS}}]\label{fact:DKS}
+For $\ell\in\{0,1\}$, with $b_0=b$,
+\[
+  \sum_{n\ge0}b_\ell(n)q^n=(-q;q)_\infty\sum_{r\ge0}\frac{(-1)^rq^{r(r+\ell)}}{(-q;q)_r}.
+\]
+\end{fact}
+
+\begin{fact}[Rogers--Ramanujan--Bailey identities {\cite[Eqs.~(1.3)--(1.4)]{Sills}}]\label{fact:Sills}
+As identities in $\Z[a][[q]]$,
+\begin{align*}
+  (aq;q)_\infty\sum_{r\ge0}\frac{a^rq^{r^2}}{(q;q)_r}
+  &=1+\sum_{j\ge1}(-1)^ja^{2j}q^{j(5j-1)/2}\frac{(1-aq^{2j})(aq;q)_{j-1}}{(q;q)_j},\\
+  (aq;q)_\infty\sum_{r\ge0}\frac{a^rq^{r(r+1)}}{(q;q)_r}
+  &=\sum_{j\ge0}(-1)^ja^{2j}q^{j(5j+3)/2}\frac{(1-aq^{2j+1})(aq;q)_j}{(q;q)_j}.
+\end{align*}
+At $a=1$ these are the Rogers--Ramanujan identities.
+\end{fact}
+
+\begin{fact}[Hecke--Rogers identities, Andrews {\cite{Andrews}}; see also {\cite[\S1]{CGS}}]\label{fact:HR}
+For $\ell\in\{0,1\}$,
+\begin{equation}\label{eq:hecke-rogers}
+  (q;q)_\infty\sum_{r\ge0}\frac{q^{r(r+\ell)}}{(-q;q)_r}
+  =\sum_{\substack{x\in\Z,\ x\equiv2\ell+1\ (10)\\ j\in\Z,\ 10|j|<|x|}}
+  \operatorname{sgn}(x)(-1)^jq^{(x^2-40j^2-(2\ell+1)^2)/40}.
+\end{equation}
+\end{fact}
+
+\begin{fact}[Liouville-type identities {\cite[Thms.~5.6, 5.8, 5.10]{AAMW}}]\label{fact:Liouville}
+Specialized to an even function as in \cref{prop:K5-reduction}, these give the
+three evaluations \eqref{eq:liouville}.
+\end{fact}
+
+\begin{fact}[Weight-one Eisenstein series {\cite[\S5.3]{Stein}}]\label{fact:eisenstein}
+For an odd primitive Dirichlet character $\rho$ of conductor $c$, the series
+$E^\rho=\frac{L(0,\rho)}2+\sum_{n\ge1}\bigl(\sum_{d\mid n}\rho(d)\bigr)q^n$ lies in
+$M_1(\Gamma_0(c),\rho)$. Here $L(s,\rho)=\sum_{n\ge1}\rho(n)n^{-s}$, continued
+analytically to $s=0$.
+\end{fact}
+
+\begin{fact}[Theta series {\cite[\S\S2--3]{Buzzard}}]\label{fact:theta}
+$\theta(z)=\sum_{a\in\Z}q^{a^2}$ is a modular form of weight $1/2$ on
+$\Gamma_0(4)$, with the standard theta multiplier; the series $\theta(dz)$ are
+modular on $\Gamma_0(4d)$.
+\end{fact}
+
+\begin{fact}[Sturm's theorem {\cite[Thm.~9.18]{Stein}}]\label{fact:sturm}
+Let $\Gamma$ be a congruence subgroup of index $m$ in $SL_2(\Z)$ and let
+$f\in M_k(\Gamma)$ have integer coefficients. If $\coef nf\equiv0\pmod2$ for all
+$n\le km/12$, then $f\equiv0\pmod2$.
+\end{fact}

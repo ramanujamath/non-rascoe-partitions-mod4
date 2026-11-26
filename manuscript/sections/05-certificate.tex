@@ -1,0 +1,95 @@
+\section{A pointwise cancellation identity}\label{sec:certificate}
+
+The idea of this section is to write the indicator of the cone, viewed inside
+$\Tset_p(D)$, as a sum of terms that cancel in pairs when summed over
+$\Tset_p(D)$, because they are matched by $\Jk$, $\Sw$, $A_2$ and $A_5$. The
+terms are given by a finite table (the \emph{certificate}); verifying the
+identity is a finite computation, because everything involved depends only on
+residues and on the position of the triple relative to finitely many lines.
+
+\subsection{Labels}
+For a positive rational triple $t=(x,y,z)$ put
+\[
+  L_0(t)=x-2y,\quad L_1(t)=2x-2y+z,\quad L_2(t)=3x-2y+2z,\quad L_3(t)=4x-2y+4z .
+\]
+These four numbers are strictly increasing. Extend $\beta$ to positive rational
+triples: if none of the $L_i(t)$ is zero, $\beta(t)$ is the number of negative
+$L_i(t)$; if $L_i(t)=0$, put $\beta(t)=5+i$. This agrees with the branches of
+\cref{tab:jackson} away from boundaries. The \emph{label} of $t$ is
+\[
+  \lab(t)=\bigl(\beta(t),\ \beta(A_2t)\bigr).
+\]
+For $t\in\Tset_p(D)$ the first entry lies in $\{0,\dots,4\}$. The second entry
+can also be $5$ or $7$, corresponding to
+\begin{equation}\label{eq:boundary-labels}
+  y=x\qquad\text{or}\qquad y=3x+4z ;
+\end{equation}
+the other two boundary values $6$ and $8$ would force $D=(x+2z)^2$ or
+$D=(x+4z)^2$. So the labels that occur for integral triples lie in
+\[
+  \mathcal B=\{0,1,2,3,4\}\times\{0,1,2,3,4,5,7\}.
+\]
+
+\subsection{The certificate}
+The certificate is printed in \cref{app:certificate}; the program there decodes
+it to a data file
+\[
+  \texttt{original\_cone\_stratified.json}.
+\]
+It defines four functions
+\[
+  f_{\Jk},\ f_{\Sw},\ f_2,\ f_5:\ \mathcal B\times(\Z/20\Z)^3\times\F_2\longrightarrow\F_2 .
+\]
+Each of its $5485$ records $[\text{tag},[b,a],[r,s,u],g]$ marks one argument at
+which the function takes the value $1$; all other values are $0$. The tags
+\texttt{J}, \texttt{S}, \texttt{T}, \texttt{V} refer to $f_{\Jk}$, $f_{\Sw}$, $f_2$,
+$f_5$. For a triple $t$ with bit $g(t)$ put
+\[
+  F_e(t)=f_e\bigl(\lab(t),\ t\bmod20,\ g(t)\bigr)\qquad(e\in\{\Jk,\Sw,2,5\}),
+\]
+where $t\bmod 20$ is taken componentwise.
+
+\begin{lemma}\label{lem:cancellation}
+For every $t=(x,y,z)\in\Tset_p(D)$ with $D\equiv1\pmod{40}$, in $\F_2$,
+\begin{equation}\label{eq:cancellation}
+\begin{aligned}
+  \one_{\{2y<x,\ 5\mid y,\ 4\mid z\}}={}&F_{\Jk}(t)+F_{\Jk}(\Jk t)+F_{\Sw}(t)+F_{\Sw}(\Sw t)\\
+  &+\one_{2\mid z}F_2(t)+\one_{2\mid y}F_2(A_2t)+\one_{5\mid z}F_5(t)+\one_{5\mid y}F_5(A_5t).
+\end{aligned}
+\end{equation}
+\end{lemma}
+
+\begin{proof}[Proof by exhaustive verification]
+By \cref{lem:sign}, the bits of $\Jk t$, $\Sw t$, $A_2t$, $A_5t$ are determined by
+$g(t)$ and $\beta(t)$. The remaining arithmetic data in \eqref{eq:cancellation}
+depend only on
+\[
+  x\bmod20,\qquad y\bmod200,\qquad z\bmod20 :
+\]
+the modulus $200$ determines $y/2\bmod20$ when $2\mid y$ and $y/5\bmod20$ when
+$5\mid y$, and these residues determine $x^2+2yz\bmod40$. The geometric data are
+the five labels
+\begin{equation}\label{eq:signature}
+  \lab(t),\ \lab(\Jk t),\ \lab(\Sw t),\ \lab(A_2t),\ \lab(A_5t),
+\end{equation}
+which we call the \emph{signature} of $t$.
+
+Normalize $x=1$. On each branch of $\Jk$, every inequality or equality defining
+\eqref{eq:signature} is linear in $y,z$. The program
+\texttt{verify\_original\_certificate.py} (\cref{app:verifier}) lists all
+signatures that occur for some positive real $(y,z)$, by exact
+Fourier--Motzkin elimination with strict and weak inequalities (an equality is
+imposed as two weak inequalities). There are $263$ of them: $92$ without a
+boundary label and $171$ with at least one. No approximation or sampling is used.
+
+For an integral triple $s=(X,Y,Z)$ at which a term is evaluated, the program
+imposes the necessary conditions $\lab(s)\in\mathcal B$,
+$\beta(A_2s)=5\Rightarrow Y\equiv X\pmod{20}$ and
+$\beta(A_2s)=7\Rightarrow Y\equiv3X+4Z\pmod{20}$, which follow from
+\eqref{eq:boundary-labels}. It then runs over all residues $0\le x<20$,
+$0\le y<200$, $0\le z<20$ with $x^2+2yz\equiv1\pmod{40}$, all signatures compatible
+with these conditions, and both bits, and evaluates both sides of
+\eqref{eq:cancellation} from the certificate. All $1\,156\,160$ identities hold,
+$272\,960$ of them involving a boundary label. Every actual triple realizes one
+of these combinations, which proves the lemma.
+\end{proof}

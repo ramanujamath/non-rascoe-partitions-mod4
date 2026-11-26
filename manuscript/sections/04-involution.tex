@@ -1,0 +1,92 @@
+\section{An involution and a sign}\label{sec:involution}
+
+\subsection{The finite set and its maps}
+Let $p$ be as in \cref{thm:cone-parity}, and let $D$ be a positive nonsquare with
+$p\mid D$. First assume $D\equiv1\pmod{40}$, and put
+\[
+  \Tset_p(D)=\{(x,y,z)\in\Z_{>0}^3:\ x^2+2yz=D,\ \ p\nmid\gcd(x,y,z)\}.
+\]
+The last condition says only that $p$ does not divide all three coordinates.
+The set is finite, its $x$-coordinates are odd, and $4\mid yz$.
+
+Each triple $t=(x,y,z)$ falls into one of five \emph{branches}
+$\beta(t)\in\{0,1,2,3,4\}$, according to the position of $2y$ relative to the
+increasing numbers $x<2x+z<3x+2z<4x+4z$ (\cref{tab:jackson}). On branch $b$
+\emph{Jackson's map} $\Jk$ is the linear map in the last column; see \cite{Jackson}
+for the classical version, which is stated for prime discriminants.
+
+\begin{table}[ht]
+\caption{Branches of Jackson's map $\Jk$.}\label{tab:jackson}
+\begin{tabular}{cll}
+\toprule
+$\beta$ & condition & $\Jk(x,y,z)$\\
+\midrule
+0 & $2y<x$ & $(x-2y,\ z+2x-2y,\ y)$\\
+1 & $x<2y<2x+z$ & $(2y-x,\ y,\ 2x-2y+z)$\\
+2 & $2x+z<2y<3x+2z$ & $(3x-2y+2z,\ 2x-y+2z,\ -2x+2y-z)$\\
+3 & $3x+2z<2y<4x+4z$ & $(-3x+2y-2z,\ -2x+2y-z,\ 2x-y+2z)$\\
+4 & $4x+4z<2y$ & $(x+2z,\ z,\ -2x+y-2z)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No triple lies on a boundary: $2y=x$ and $2y=3x+2z$ contradict the oddness of
+$x$, while $2y=2x+z$ and $2y=4x+4z$ would give $D=(x+z)^2$ and $D=(x+2z)^2$. A
+direct substitution shows that $\Jk$ preserves $x^2+2yz$, produces positive
+coordinates, and sends branch $b$ to branch $(4,1,2,3,0)_b$. The linear maps on
+branches $0$ and $4$ are inverse to each other, and those on branches $1,2,3$
+are involutions; all have integral inverses, so $p\nmid\gcd$ is preserved. Hence
+$\Jk$ is an involution of $\Tset_p(D)$.
+
+The swap $\Sw(x,y,z)=(x,z,y)$ is a second involution. For $\ell\in\{2,5\}$
+define the rational map
+\[
+  A_\ell(x,y,z)=(x,\ y/\ell,\ \ell z).
+\]
+It restricts to a bijection from the triples of $\Tset_p(D)$ with $\ell\mid y$ to
+those with $\ell\mid z$; the condition $p\nmid\gcd$ is preserved because
+$p\nmid10$.
+
+\subsection{The sign}
+Write $\chi(a)=\Leg ap$. By \eqref{eq:legendre-values},
+$\chi(-1)=1$, $\chi(2)=-1$, $\chi(5)=1$. Let $\F_2=\Z/2\Z$. For
+$t=(x,y,z)\in\Tset_p(D)$ define a sign $\epsilon(t)$ and a bit $g(t)\in\F_2$ by
+\[
+  \epsilon(x,y,z)=\begin{cases}\chi(y),&p\nmid y,\\ \chi(-2z),&p\mid y,\end{cases}
+  \qquad (-1)^{g(t)}=\epsilon(t).
+\]
+This is well defined: if $p\mid y$ then $p\mid x$ (as $p\mid D$), so the
+condition $p\nmid\gcd$ forces $p\nmid z$.
+
+\begin{lemma}\label{lem:sign}
+In $\F_2$, on the domains of the respective maps,
+\[
+  g(\Sw t)=g(t)+1,\qquad g(\Jk t)=g(t)+c_{\beta(t)},\quad (c_0,\dots,c_4)=(1,0,0,1,1),
+\]
+\[
+  g(A_2t)=g(t)+1,\qquad g(A_5t)=g(t).
+\]
+\end{lemma}
+
+\begin{proof}
+Suppose first that $p\nmid y$. Since $p\mid D$, $z\equiv-x^2/(2y)\pmod p$. In
+branches $0,2,3$ the new second coordinate is then congruent to
+\[
+  -\frac{(x-2y)^2}{2y},\qquad -\frac{(x-y)^2}{y},\qquad \frac{(x-2y)^2}{2y}
+\]
+respectively; in branch $1$ it is $y$, and in branch $4$ it is $z\equiv-x^2/(2y)$.
+Since $\chi(-1)=1$ and $\chi(2)=-1$, these give the stated changes whenever the new
+second coordinate is a unit modulo $p$. If it is divisible by $p$, use the new third
+coordinate in the definition of $\epsilon$: in branches $0,2,3,4$ this gives
+$\chi(-2y)$, $\chi(-y)$, $\chi(2y)$, $\chi(-2y)$ respectively (at the roots
+$x\equiv2y$, $y$, $2y$, $0$), the same multipliers of $\chi(y)$.
+
+If $p\mid y$, then $p\mid x$ and $p\nmid z$. The new second coordinates in
+branches $0,2,3,4$ are congruent to $z,2z,-z,z$, and in branch $1$ the new third
+coordinate is $z$; comparing with $\chi(-2z)$ gives the same table.
+
+For $\Sw$: if $y,z$ are both units then $\chi(yz)=\chi(-x^2/2)=\chi(-2)=-1$, so
+$\chi(z)=-\chi(y)$; if one of them is divisible by $p$, the second case of the
+definition gives the same reversal. Finally $A_\ell$ multiplies the relevant
+coordinate by $\chi(\ell)^{\pm1}$, giving $+1$ for $\ell=2$ and $0$ for $\ell=5$.
+\end{proof}

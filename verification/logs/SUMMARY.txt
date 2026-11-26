@@ -1,0 +1,8 @@
+-- decode_certificate: Recovered 5485 entries; SHA256: 6c1b022e9351a42cc36343600484a7fd7bec93eb42065eb1f454580db5826d60   [0.1s]
+-- verify_original_certificate: Verified 1156160 pointwise identities; 272960 boundary-signature checks; 5485 nonzero entries; 6.69 seconds.   [6.7s]
+-- prove_square_scaling_29: All 46081 coefficients of U_29(F) through the bound vanish modulo 2.   [0.8s]
+-- check_partitions: 21 passed, 0 failed   [1.7s]
+-- check_reduction: 15 passed, 0 failed   [0.2s]
+-- check_cone: 12 passed, 0 failed   [5.1s]
+-- check_divisor: 22 passed, 0 failed   [8.9s]
+ALL PASSED

@@ -1,0 +1,8 @@
+Weight 2; group index 276480; Sturm bound 46080.
+All 46081 coefficients of U_29(F) through the bound vanish modulo 2.
+Input expansion through 1336320 uses exact bitwise arithmetic.
+SHA256 of complete packed F expansion: 5a16cb7c2191e30e8283f524b3c632e1e14f09102cdbe5386d4ca5aad72a57d4
+Together with Section 7, this proves the 29-adic convolution recurrence.
+Section 8 deduces the companion congruences at ALL square discriminants.
+Scope of this script: square discriminants only.
+For the separate nonsquare proof, see non_rascoe_congruences.pdf, Sections 3--5.

@@ -1,0 +1,40 @@
+\section{The cancellation certificate}\label{app:certificate}
+
+The following program determines all nonzero values of the four functions of
+\cref{sec:certificate}. A record has the form $[t,[b,a],[x,y,z],g]$ with
+$t\in\{\texttt J,\texttt S,\texttt T,\texttt V\}$ naming $f_{\Jk},f_{\Sw},f_2,f_5$,
+$(b,a)\in\mathcal B$, $0\le x,y,z<20$ and $g\in\{0,1\}$.
+
+For a compact encoding, let $j\in\{0,1,2,3\}$ be the position of $t$ in
+$(\texttt J,\texttt S,\texttt T,\texttt V)$ and $k\in\{0,\dots,6\}$ the position of $a$ in
+$(0,1,2,3,4,5,7)$, counted from $0$, and assign to the record the integer
+\[
+  2\bigl(20\bigl(20\bigl(20\,(7(5j+b)+k)+x\bigr)+y\bigr)+z\bigr)+g .
+\]
+Sort these integers, take consecutive differences starting from $0$, and write
+each difference in base $128$, least significant digit first, adding $128$ to
+every digit except the last. The string \texttt{DATA} is the Base64 encoding of
+the zlib-compressed byte sequence. The program inverts these steps and checks
+the SHA-256 digest of the result.
+
+{\footnotesize\VerbatimInput{code/decode_certificate.py}}
+
+\section{The cancellation verifier}\label{app:verifier}
+
+This program enumerates the possible signatures by exact Fourier--Motzkin
+elimination and checks \eqref{eq:cancellation} on every combination of residues,
+signature and bit (\cref{lem:cancellation}). It also checks the properties of
+Jackson's map stated in \cref{sec:involution}. It reads the file produced by
+\cref{app:certificate}.
+
+{\footnotesize\VerbatimInput{code/verify_original_certificate.py}}
+
+\section{The Sturm-bound verifier}\label{app:sturm}
+
+This program computes $\mathfrak F$ modulo $2$ (\cref{sec:recurrence}) and checks
+every coefficient of $U_{29}\mathfrak F$ required by Sturm's theorem. It also checks
+the order of the character image used in the index computation. All polynomial
+arithmetic over $\F_2$ is done exactly with integer bit operations. (The
+comments in the program refer to the form $\mathfrak F$ as \texttt{F}.)
+
+{\footnotesize\VerbatimInput{code/prove_square_scaling_29.py}}

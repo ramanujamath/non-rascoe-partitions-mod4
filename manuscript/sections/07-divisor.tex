@@ -1,0 +1,206 @@
+\section{Square discriminants: a divisor transform}\label{sec:divisor}
+
+The nonsquare hypothesis in \cref{thm:cone-parity} was used to keep triples off
+the boundaries of $\Jk$. For square discriminants we replace the cone
+inequality by a divisor transform and then work with Lambert series.
+
+\subsection{The divisor transform}
+For a positive odd integer $m$ prime to $5$ put $\gamma(m)=C(m^2)$. For $d\ge1$ let
+$\mathcal L_d(q)=q^d/(1-q^d)$, and define
+\[
+  \mathcal A(q)=\sum_{\substack{a,s\ge1\\5\mid a}}q^{2as}\bigl(\mathcal L_a(q)\mathcal L_{2s}(q)+\mathcal L_{2a}(q)\mathcal L_s(q)\bigr),
+  \qquad A_m=\coef m\mathcal A(q).
+\]
+Only finitely many terms contribute to each coefficient.
+
+\begin{proposition}\label{prop:divisor-transform}
+For every positive odd integer $m$ prime to $5$,
+\[
+  A_m=\sum_{d\mid m}\gamma(d),\qquad \gamma(m)=\sum_{d\mid m}\mu(d)A_{m/d}.
+\]
+\end{proposition}
+
+\begin{proof}
+For a triple counted by $\gamma(m)$ put $a=(m-x)/2$ and $b=(m+x)/2$; the positive
+integer matrix
+\[
+  T=\begin{pmatrix}a&5u\\2v&b\end{pmatrix}
+\]
+has determinant $ab-10uv=(m^2-x^2-40uv)/4=0$ and trace $m$. Let $g$ be the gcd of
+its entries. Then $g\mid m$, so $g$ is prime to $10$ and divides $x,u,v$.
+Conversely $d=\gcd(x,u,v)$ satisfies $d^2\mid m^2$, so $d\mid m$, and since $d$ is
+odd it divides $a$ and $b$. Thus $g=\gcd(x,u,v)$.
+
+A rank-one positive integer matrix factors as a column $(h,k)^{T}$ times a row
+$(r,s)$ in exactly $\tau(g)$ ways: dividing the first row by its gcd gives the
+unique factorization with $\gcd(r,s)=1$, whose column has gcd $g$, and every other
+factorization moves a divisor of $g$ from the column to the row. These
+factorizations correspond to positive quadruples $(h,k,r,s)$ with
+\[
+  hr+ks=m,\qquad 5\mid hs,\qquad 2\mid kr,\qquad ks-hr>2hs,
+\]
+with inverse $x=ks-hr$, $u=hs/5$, $v=kr/2$. Write $k=t+2h$. The inequality forces
+$t>0$ and becomes $ts>hr$; the trace condition becomes $hr+ts+2hs=m$, and the parity
+condition $2\mid tr$. Without the inequality, the involution
+$(h,t,r,s)\mapsto(s,r,t,h)$ exchanges $ts$ and $hr$, and equality $ts=hr$ would make
+$m$ even. So the count without the inequality is twice the sum of
+$\tau(\gcd(x,u,v))$ over the triples counted by $\gamma(m)$.
+
+For fixed $h,s$, inclusion--exclusion for $2\mid tr$ gives
+$\mathcal L_h\mathcal L_{2s}+\mathcal L_{2h}\mathcal L_s-\mathcal L_{2h}\mathcal L_{2s}$; after
+multiplication by $q^{2hs}$ the last product has only even exponents. The other two
+terms are symmetric in $h,s$, so inclusion--exclusion for $5\mid hs$ makes their
+coefficient at $q^m$ twice the coefficient with $5\mid h$ (the case $5\mid h$ and $5\mid s$
+contributes only multiples of $5$). Hence
+$A_m=\sum\tau(\gcd(x,u,v))$ over the triples counted by $\gamma(m)$. Expanding
+$\tau$ and dividing each triple by a common divisor $d\mid m$ gives
+$A_m=\sum_{d\mid m}\gamma(m/d)$, and M\"obius inversion gives the second formula.
+\end{proof}
+
+\subsection{Products of Lambert series}
+Unspecified summation indices are positive integers. Put
+\[
+  \mathcal O_d(q)=\frac{q^d}{1-q^{2d}},\quad
+  \mathcal O=\sum_{d\ \mathrm{odd}}\mathcal O_d,\quad
+  \mathcal O_5=\sum_{\substack{d\ \mathrm{odd}\\5\mid d}}\mathcal O_d,\quad
+  \mathcal V=\sum_{d}\mathcal L_{2d},\quad
+  \mathcal V_5=\sum_{d}\mathcal L_{10d},
+\]
+and, for $1\le j\le10$ and $a\in\{1,\dots,10\}$,
+\[
+  \mathcal P_j(q)=\sum_{r\ \mathrm{odd}}\frac{q^{jr}}{1-q^{10r}}=\sum_{d\equiv j\ (10)}\mathcal O_d(q),
+  \qquad
+  \mathcal T_a(q)=\sum_{d\equiv a\ (10)}\mathcal L_{2d}(q),
+\]
+where $a=10$ stands for the class $0$. (The second expression for $\mathcal P_j$
+follows by expanding and exchanging the two indices.) In particular
+$\mathcal O_5=\mathcal P_5$. Let $\mathcal A_{\mathrm{odd}}=\sum_{N\ \mathrm{odd}}A_Nq^N$, and
+\[
+  \mathcal F_5=\sum_{a\in\{1,3,5,7,9\}}\mathcal P_a\mathcal T_{10-a},\qquad
+  \mathcal G_5=\sum_{j=1}^5\mathcal P_j\mathcal P_{j+5}.
+\]
+
+\begin{proposition}\label{prop:lambert}
+In $\Zq$,
+$\mathcal A_{\mathrm{odd}}=\mathcal O_5\mathcal V+\mathcal O\mathcal V_5-\mathcal F_5-\mathcal G_5$.
+\end{proposition}
+
+\begin{proof}
+Extracting odd powers in the definition of $\mathcal A$ gives
+\[
+  \mathcal A_{\mathrm{odd}}=\sum_{m\ \mathrm{odd},\ s\ge1}\bigl(\one_{5\mid m}+\one_{5\mid s}\bigr)q^{2ms}\mathcal O_m\mathcal L_{2s}
+\]
+(in the second product of $\mathcal A$, exchange the names of the two indices
+after extracting odd powers; terms with both divisibilities have multiplicity
+two). Call the two parts $D_5$ and $E_5$. Expanding $\mathcal O_m$ and exchanging
+odd factors gives
+\[
+  \sum_{m\ \mathrm{odd}}q^{2ms}\mathcal O_m=\sum_{\substack{r\ \mathrm{odd}\\r>2s}}\mathcal O_r,\qquad
+  \sum_{\substack{m\ \mathrm{odd}\\5\mid m}}q^{2ms}\mathcal O_m=\sum_{\substack{r\ \mathrm{odd}\\r>2s}}\mathcal O_{5r}.
+\]
+Removing the finite initial segments,
+\[
+  D_5=\mathcal O_5\mathcal V-\sum_{r,t\ \mathrm{odd}}\mathcal O_{5r}\mathcal L_{r+t},\qquad
+  E_5=\mathcal O\mathcal V_5-\sum_{5\mid s}\mathcal L_{2s}\sum_{\substack{r\ \mathrm{odd}\\r<2s}}\mathcal O_r ,
+\]
+where in the first we parametrized the removed segment by $t=2s-r$.
+
+For the second removed sum use the identity
+$\mathcal O_u\mathcal L_{2v}+\mathcal O_v\mathcal L_{2u}=(\mathcal O_u+\mathcal O_v)\mathcal L_{u+v}$ and
+pair $(u,v)$ with $(v,u)$ (a diagonal term is $\mathcal O_u\mathcal L_{2u}$):
+\[
+  \sum_{5\mid s}\mathcal L_{2s}\sum_{\substack{u\ \mathrm{odd}\\u<2s}}\mathcal O_u
+  =\sum_{\substack{u,v\ \mathrm{odd}\\5\mid u+v}}\mathcal O_u\mathcal L_{2v}
+  =\sum_{a\in\{1,3,5,7,9\}}\mathcal P_a\mathcal T_{10-a}=\mathcal F_5,
+\]
+since for odd $u,v$ the condition $5\mid u+v$ means $v\equiv10-a\pmod{10}$ when
+$u\equiv a$. For the first removed sum the same pairing, with $a=q^r$, $b=q^t$ and
+$(1-(ab)^5)/(1-ab)=1+ab+\dots+(ab)^4$, gives
+\[
+  (\mathcal O_{5r}+\mathcal O_{5t})\mathcal L_{r+t}=\sum_{j=1}^5\frac{q^{(j+5)r+jt}+q^{jr+(j+5)t}}{(1-q^{10r})(1-q^{10t})},
+\]
+and the diagonal terms also match:
+$\sum_{j=1}^5q^{(2j+5)r}/(1-q^{10r})^2=q^{7r}/((1-q^{2r})(1-q^{10r}))=\mathcal O_{5r}\mathcal L_{2r}$.
+Thus $\sum_{r,t\ \mathrm{odd}}\mathcal O_{5r}\mathcal L_{r+t}=\sum_{j=1}^5\mathcal P_j\mathcal P_{j+5}=\mathcal G_5$.
+All rearrangements are coefficientwise finite.
+\end{proof}
+
+\subsection{Reduction to one divisor convolution}
+For a positive odd integer $N$ put
+\[
+  K_5(N)=\sum_{t=1}^{(N-1)/2}d_5(N-2t)\,d_5(t),\qquad
+  R(N)=\coef N(\mathcal O_5\mathcal V+\mathcal O\mathcal V_5),
+\]
+and, for $N$ also prime to $5$,
+\[
+  Q(N)=\sum_{d\mid N}q_0(d),\qquad
+  q_0(d)=\frac{d-1}2+2\Bigl\lfloor\frac d5\Bigr\rfloor-3\Bigl\lfloor\frac d{10}\Bigr\rfloor .
+\]
+
+\begin{proposition}\label{prop:K5-reduction}
+For every positive odd $N$ prime to $5$, $K_5(N)-Q(N)$ is even and
+\begin{equation}\label{eq:A-mod2}
+  A_N\equiv R(N)+\frac{K_5(N)-Q(N)}2\pmod2 .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Extend $\mathcal T_a$ to all ten classes as above. Since $\mathcal O_d=\mathcal L_d-\mathcal L_{2d}$,
+direct expansion gives $\mathcal P_{2j}=\mathcal T_j+\mathcal T_{j+5}-\mathcal T_{2j}$ for
+$1\le j\le5$. Using this, $\mathcal F_5+\mathcal G_5$ is congruent modulo $2$ to the
+generating function of the positive quadruples $(m,r,s,t)$ with $m,r$ odd, counted
+with weight $w(m,s)$ at the exponent $mr+2st$, where $w$ is given by
+\cref{tab:weights}. (The term $\mathcal P_5\mathcal T_5$ occurs twice and drops out.)
+
+\begin{table}[ht]
+\caption{The nonzero weights $w(m,s)$; all other weights are $0$.}\label{tab:weights}
+\begin{tabular}{cc}
+\toprule
+$m\bmod10$ & $s\bmod10$ with $w(m,s)=1$\\
+\midrule
+1 & 3, 6, 8, 9\\
+3 & 4, 7, 8, 9\\
+7 & 1, 2, 3, 6\\
+9 & 1, 2, 4, 7\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Write $\delta(z)=\one_{5\mid z}$ and $\Delta(a,b)=\delta(a-b)-\delta(a+b)$. Then, as an
+identity of integers,
+\[
+  2w(m,s)=\one_{5\nmid ms}+\Delta(m,2s)+(-1)^s\Delta(m,s),
+\]
+which is checked on the residue classes modulo $10$ (when $5\mid ms$ both differences
+vanish). Let $W(N)$ be the sum of $w(m,s)$ over $mr+2st=N$ with $m,r,s,t>0$ and $m,r$
+odd. \Cref{prop:lambert} gives $A_N\equiv R(N)+W(N)\pmod2$.
+
+Let $S_6,S_8,S_{10}$ be the sums of $\Delta(a,b)$ over positive $a,b,x,y$ with
+$ax+by=N$, under the respective extra conditions: $a,x,y$ odd; $a,x$ odd; $a,b,x$
+odd. Put
+\[
+  J(N)=\frac{\sigma(N)-\tau(N)}2,\qquad \Phi_j(N)=\sum_{d\mid N}\Bigl\lfloor\frac dj\Bigr\rfloor .
+\]
+Specializing the Liouville-type identities of \cref{fact:Liouville} to the even
+function $\delta$ gives
+\begin{equation}\label{eq:liouville}
+  S_6=0,\qquad S_8=J(N)-\Phi_5(N),\qquad S_{10}=J(N)-\Phi_{10}(N);
+\end{equation}
+here $\delta(0)=1$ while $\delta(d)=0$ for every $d\mid N$, and the remaining inner
+sums count multiples of $5$ or even multiples of $5$.
+
+Let $X_2$ be the sum of $\Delta(m,2s)$ over $mr+2st=N$ with $m,r$ odd, and let
+$X_{\mathrm{odd}}$, $X_{\mathrm{even}}$ be the sums of $\Delta(m,s)$ over the same set with
+$s$ odd, respectively even. Splitting $S_8$ by the parity of $b$ and then of $y$
+gives
+\[
+  X_2=S_8-S_{10},\qquad X_{\mathrm{odd}}=S_{10},\qquad X_{\mathrm{even}}=S_8-S_6-S_{10}.
+\]
+The sum of $\one_{5\nmid ms}$ is exactly $K_5(N)$. Summing the expression for $2w$
+therefore gives the integer identity
+\[
+  2W(N)=K_5(N)+X_2+X_{\mathrm{even}}-X_{\mathrm{odd}}=K_5(N)+2S_8-S_6-3S_{10}=K_5(N)-Q(N),
+\]
+because $Q(N)=J(N)+2\Phi_5(N)-3\Phi_{10}(N)$. So $K_5(N)-Q(N)$ is even, and
+substituting $W(N)=(K_5(N)-Q(N))/2$ proves \eqref{eq:A-mod2}.
+\end{proof}

@@ -1,0 +1,36 @@
+
+== Generating function vs definition
+  [ok]   b_0(n) from the definition equals the series coefficient (mod 64) for n < 90
+  [ok]   b_1(n) from the definition equals the series coefficient (mod 64) for n < 90
+  [ok]   b(0) = b1(0) = 1
+
+== Theorem 1.1
+  [ok]   p = 29: b(n) = 0 mod 4 whenever v_p(40n+1) odd (2065 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (2067 n)
+  [ok]   p = 61: b(n) = 0 mod 4 whenever v_p(40n+1) odd (999 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (999 n)
+  [ok]   p = 101: b(n) = 0 mod 4 whenever v_p(40n+1) odd (607 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (608 n)
+  [ok]   p = 109: b(n) = 0 mod 4 whenever v_p(40n+1) odd (563 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (564 n)
+  [ok]   p = 149: b(n) = 0 mod 4 whenever v_p(40n+1) odd (413 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (413 n)
+  [ok]   p = 181: b(n) = 0 mod 4 whenever v_p(40n+1) odd (341 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (340 n)
+  [ok]   p = 229: b(n) = 0 mod 4 whenever v_p(40n+1) odd (269 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (270 n)
+  [ok]   p = 269: b(n) = 0 mod 4 whenever v_p(40n+1) odd (229 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (229 n)
+  [ok]   p = 349: b(n) = 0 mod 4 whenever v_p(40n+1) odd (176 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (177 n)
+  [ok]   p = 389: b(n) = 0 mod 4 whenever v_p(40n+1) odd (158 n), b1(n) = 0 mod 4 whenever v_p(40n+9) odd (158 n)
+  [ok]   b(29k + 21) = 0 mod 4 for 1 <= k < 2137, 29 does not divide k (Dixit-Kumar-Srivastava conjecture)
+  [ok]   b1(29k + 15) = 0 mod 4 for k != 6 (mod 29) in range
+  [info] b(21) mod 4 = 3  (k = 0, valuation 2: not covered)
+
+== Theorem 1.2
+  [ok]   b(841n + 21) + b(n) = 0 mod 4 for 0 <= n <= 73
+  [ok]   b1(841n + 189) + b1(n) = 0 mod 4 for 0 <= n <= 73
+
+== Corollary 5.1
+  [ok]   p = 29: b_l(p^2 n + (2l+1)^2 (p^2-1)/40) = -1 b_l(n) mod 4 at nonsquare 40n+(2l+1)^2
+  [info] p = 29: at square discriminants the same scaling fails in 0 of 22 cases in range
+  [ok]   p = 61: b_l(p^2 n + (2l+1)^2 (p^2-1)/40) = +1 b_l(n) mod 4 at nonsquare 40n+(2l+1)^2
+  [info] p = 61: at square discriminants the same scaling fails in 10 of 10 cases in range
+  [ok]   p = 101: b_l(p^2 n + (2l+1)^2 (p^2-1)/40) = +1 b_l(n) mod 4 at nonsquare 40n+(2l+1)^2
+  [info] p = 101: at square discriminants the same scaling fails in 0 of 6 cases in range
+  [ok]   p = 109: b_l(p^2 n + (2l+1)^2 (p^2-1)/40) = -1 b_l(n) mod 4 at nonsquare 40n+(2l+1)^2
+  [info] p = 109: at square discriminants the same scaling fails in 6 of 6 cases in range
+
+-- check_partitions: 21 passed, 0 failed

@@ -1,0 +1,110 @@
+\documentclass[11pt]{amsart}
+
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{fancyvrb}
+\usepackage[hidelinks]{hyperref}
+\usepackage[capitalize,nameinlink]{cleveref}
+
+\numberwithin{equation}{section}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}{Fact}
+\renewcommand{\thefact}{F\arabic{fact}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\crefname{fact}{Fact}{Facts}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Zq}{\Z[[q]]}
+\newcommand{\coef}[1]{[q^{#1}]}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\Jk}{\mathcal J}
+\newcommand{\Sw}{\mathcal S}
+\newcommand{\Tset}{\mathcal T}
+\newcommand{\lab}{\operatorname{lab}}
+\newcommand{\ol}{\overline}
+\newcommand{\Leg}[2]{\Bigl(\frac{#1}{#2}\Bigr)}
+
+\begin{document}
+
+\title{Congruences modulo four for non-Rascoe partitions}
+
+\author{Sumit Kumar Jha}
+\address{Independent researcher, Greater Noida, Uttar Pradesh, India}
+\email{sumitkumarjha75@gmail.com}
+
+\subjclass[2020]{05A17, 11P83, 11F33}
+\keywords{Non-Rascoe partitions; partition congruences; Rogers--Ramanujan
+identities; Hecke--Rogers series; modular forms; involutions;
+computer-assisted proofs}
+
+\begin{abstract}
+Let $b(n)$ be the number of partitions of $n$ into distinct parts in which the
+number of parts does not occur as a part, and let $b_1(n)$ be the number of
+those in which the number of parts plus one does not occur as a part. We prove
+the conjecture of Dixit, Kumar and Srivastava that $b(29k+21)$ is divisible by
+$4$ for every positive integer $k$ not divisible by $29$. More generally, if $p$
+is a prime with $p\equiv21$ or $29\pmod{40}$, then $b(n)\equiv0\pmod4$ whenever
+the exponent of $p$ in $40n+1$ is odd, and $b_1(n)\equiv0\pmod4$ whenever the
+exponent of $p$ in $40n+9$ is odd. We also prove
+$b(841n+21)+b(n)\equiv0\pmod4$ and $b_1(841n+189)+b_1(n)\equiv0\pmod4$ for
+all $n\ge0$; the first of these was conjectured by Cuthbertson for $n\ge1$.
+
+The proof reduces both generating functions modulo $4$ to a Hecke--Rogers
+series and a count of lattice points in a cone. When the relevant
+discriminant is not a square, the parity of the cone count is controlled by an
+involution of Jackson, a sign built from the Legendre symbol, and a finite
+cancellation identity that we check exhaustively by computer. When the
+discriminant is a square, a divisor transform turns the problem into a
+statement about a modular form of weight two, which is settled by Sturm's
+theorem. The certificate data and the verification programs are included.
+\end{abstract}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+\input{sections/01-introduction}
+\input{sections/02-notation}
+\input{sections/03-reduction}
+\input{sections/04-involution}
+\input{sections/05-certificate}
+\input{sections/06-nonsquare-proofs}
+\input{sections/07-divisor}
+\input{sections/08-recurrence}
+\input{sections/09-scaling}
+\input{sections/10-verification}
+
+\appendix
+\input{sections/A-appendices}
+
+\section*{Statements and declarations}
+\noindent\textbf{Funding.} No external funding was received for this work.
+
+\noindent\textbf{Competing interests.} The author declares no conflict of interest.
+
+\noindent\textbf{Data availability.} All certificate data and verification code
+needed for the computer-assisted parts of the proofs are included in the
+appendices and in the accompanying repository.
+
+\noindent\textbf{Author contribution.} Sumit Kumar Jha is the sole author and is
+responsible for the content of the manuscript.
+
+\noindent\textbf{Use of generative AI.} Generative AI tools were used to assist
+with mathematical exploration, computational verification and manuscript
+preparation. The author is responsible for the final content.
+
+\input{references}
+
+\end{document}

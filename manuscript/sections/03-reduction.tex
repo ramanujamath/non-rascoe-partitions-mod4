@@ -1,0 +1,87 @@
+\section{From partitions to the cone count}\label{sec:reduction}
+
+For $\ell\in\{0,1\}$ put $b_0=b$ and define
+\begin{align*}
+  B_\ell(q)&=\sum_{n\ge0}b_\ell(n)q^n, &
+  H_\ell(q)&=(q;q)_\infty\sum_{r\ge0}\frac{q^{r(r+\ell)}}{(-q;q)_r}=\sum_{n\ge0}h_\ell(n)q^n,\\
+  \Theta_\ell(q)&=\sum_{m\in\Z}(-1)^mq^{m(5m+2\ell+1)/2}, &
+  N_\ell(q)&=(q;q)_\infty\sum_{r\ge0}\frac{r\,q^{r(r+\ell)}}{(q;q)_r},
+\end{align*}
+and the Lambert series $\Lambda(q)=\sum_{j\ge1}q^j/(1-q^j)$.
+
+Since $-1\equiv1\pmod2$, $(-q;q)_r\equiv(q;q)_r\pmod2$; so by the Rogers--Ramanujan
+identities and the Jacobi triple product, $H_\ell\equiv\Theta_\ell\pmod2$. Also
+\[
+  \frac{(-q;q)_\infty}{(q;q)_\infty}=\prod_{j\ge1}\Bigl(1+\frac{2q^j}{1-q^j}\Bigr)
+  \equiv1+2\Lambda\pmod4 .
+\]
+In the sum of \cref{fact:DKS} use $(-1)^r\equiv1+2r\pmod4$. The part with
+$1$ gives $(-q;q)_\infty/(q;q)_\infty\cdot H_\ell\equiv(1+2\Lambda)H_\ell$, and in the
+part with $2r$ we may replace $(-q;q)_\infty$ and $(-q;q)_r$ by $(q;q)_\infty$ and
+$(q;q)_r$, since they agree modulo $2$. With $H_\ell\equiv\Theta_\ell\pmod2$ this gives
+\begin{equation}\label{eq:B-mod4}
+  B_\ell\equiv H_\ell+2\Theta_\ell\Lambda+2N_\ell\pmod4 .
+\end{equation}
+
+\subsection{The cone series}
+Put
+\[
+  C_0(q)=\sum_{a\ge1}\Bigl(q^{a(5a-1)/2}\sum_{u=1}^{a-1}\frac{q^u}{1-q^u}
+  +q^{a(5a+1)/2}\sum_{u=1}^{a}\frac{q^u}{1-q^u}\Bigr),
+\]
+and, with $\alpha_a=a(5a+3)/2$ and $e_a=(a+1)(5a+2)/2$,
+\[
+  C_1(q)=\sum_{a\ge0}\bigl(q^{\alpha_a}+q^{e_a}\bigr)\sum_{u=1}^{a}\frac{q^u}{1-q^u},\qquad
+  U(q)=\sum_{a\ge0}q^{e_a}.
+\]
+An empty inner sum is $0$. Expanding the geometric series shows that
+\begin{equation}\label{eq:cone-series}
+  \coef nC_\ell(q)=C\bigl(40n+(2\ell+1)^2\bigr).
+\end{equation}
+Indeed, for $\ell=0$ the two sums correspond to $x=10a-1$ and $x=10a+1$, and for
+$\ell=1$ to $x=10a+3$ and $x=10a+7$: one checks
+$x^2-(2\ell+1)^2=40\cdot(\text{the leading exponent})$ in each case, the summation
+variable $u$ ranges exactly over $10u<x$, and the geometric series in $u$
+supplies $v$. The excluded value $x=1$ admits no $u$.
+
+\begin{proposition}\label{prop:reduction}
+One has
+\[
+  B_0\equiv H_0+2C_0\pmod4,\qquad B_1\equiv H_1+2C_1+2U\pmod4 .
+\]
+If $v_p(40n+(2\ell+1)^2)$ is odd, then
+\begin{equation}\label{eq:b-equals-cone}
+  b_\ell(n)\equiv2\,C\bigl(40n+(2\ell+1)^2\bigr)\pmod4 .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Differentiate the identities of \cref{fact:Sills} with respect to $a$ and put
+$a=1$; this is legitimate coefficientwise, since every coefficient is a
+polynomial in $a$. Since $\frac{d}{da}(aq;q)_\infty\big|_{a=1}=-(q;q)_\infty\Lambda$
+and, by the Rogers--Ramanujan identities and the Jacobi triple product,
+$(q;q)_\infty\sum_rq^{r(r+\ell)}/(q;q)_r=\Theta_\ell$, the left sides become
+$N_\ell-\Theta_\ell\Lambda$. On the right of the first identity, the derivative of
+$a^{2j}$ is even and may be dropped modulo $2$. The derivative of $1-aq^{2j}$
+gives $q^{2j}/(1-q^j)$, and the derivative of $(aq;q)_{j-1}$ gives
+$(1-q^{2j})/(1-q^j)=1+q^j$ times $\sum_{u=1}^{j-1}q^u/(1-q^u)$, up to sign. Hence
+\[
+  N_0-\Theta_0\Lambda\equiv\sum_{j\ge1}q^{j(5j-1)/2}\Bigl((1+q^j)\sum_{u=1}^{j-1}\frac{q^u}{1-q^u}+\frac{q^{2j}}{1-q^j}\Bigr)
+  \equiv C_0\pmod2 ;
+\]
+for the last step note $q^{j(5j-1)/2}\cdot q^j=q^{j(5j+1)/2}$ and
+$q^{j(5j-1)/2}q^{2j}/(1-q^j)=q^{j(5j+1)/2}\,q^j/(1-q^j)$, which is the term $u=j$
+of the second sum in $C_0$. In the second identity the derivative of
+$1-aq^{2j+1}$ contributes $q^{e_j}$, and the finite product $(aq;q)_j$
+contributes the summand of $C_1$; hence $N_1-\Theta_1\Lambda\equiv C_1+U\pmod2$.
+Since $H_\ell\equiv\Theta_\ell\pmod 2$, substituting into \eqref{eq:B-mod4}
+proves the two congruences.
+
+For the last statement we use \eqref{eq:hecke-rogers}. If
+$p\mid x^2-40j^2$ then, since $\Leg{10}p=-1$ by \eqref{eq:legendre-values},
+$p$ divides both $x$ and $j$; dividing by $p^2$ repeatedly shows that every
+nonzero integer of the form $x^2-40j^2$ has even $p$-adic valuation. So
+$h_\ell(n)=0$ when $v_p(40n+(2\ell+1)^2)$ is odd. Finally
+$40e_a+9=(10a+7)^2$, so $\coef nU=0$ when $v_p(40n+9)$ is odd. Together with
+\eqref{eq:cone-series} this proves \eqref{eq:b-equals-cone}.
+\end{proof}

@@ -1,0 +1,10 @@
+__pycache__/
+verification/logs/*.json
+verification/appendix/original_cone_stratified.json
+verification/appendix/square_scaling_29_certificate.json
+manuscript/*.aux
+manuscript/*.log
+manuscript/*.out
+manuscript/*.fls
+manuscript/*.fdb_latexmk
+manuscript/*.toc

@@ -23,7 +23,6 @@ The proof has two computer-assisted steps:
 ```
 manuscript/
   main.tex, sections/*.tex, references.tex   rewritten manuscript
-  code/                                      the three certificate programs (included verbatim)
   main.pdf                                   compiled rewrite
   original/                                  the audited draft
 verification/

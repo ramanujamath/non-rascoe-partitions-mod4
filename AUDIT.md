@@ -1,7 +1,7 @@
 # Audit: *Congruences modulo four for non-Rascoe partitions*
 
 Draft audited: `manuscript/original/Congruences_Modulo_Four_Non_Rascoe_Submission.pdf` (28 pp.).
-Rewrite: `manuscript/main.tex` → `manuscript/main.pdf` (23 pp.).
+Rewrite: `manuscript/main.tex` → `manuscript/main.pdf` (17 pp.).
 
 ## 1. Summary
 
@@ -80,7 +80,7 @@ Run `python3 verification/run_all.py` (standard library and numpy; about 25 s). 
 | `P_d, O_d, S_d, D_d` (theta) | `θ⁺_d, θ^odd_d, Ω_d, ϑ_d` | `P∞`, Lambert `P_j`, `D` |
 | `D(q), D₀, Z, R, M_p, J, Y, F` | `𝒟, 𝒟₀, 𝒵, ℛ, ℳ, 𝒩, 𝒴, 𝔉` | various |
 
-- **Layout.** The appendix code is included verbatim from the repository files, so the PDF and the repository cannot drift apart. There are no overfull lines.
+- **Layout.** The program listings were removed from the appendices. The appendices now describe the certificate encoding and the three programs, and give GitHub links to them in `verification/appendix/` (the SHA-256 of the decoded certificate is printed). There are no overfull lines.
 
 ## 5. Draft → rewrite map
 
@@ -96,4 +96,4 @@ Run `python3 verification/run_all.py` (standard library and numpy; about 25 s). 
 | §7 (Thm 7.1, Table 3) | §8 (Thm 8.1, Table 3) |
 | §8 (Prop 8.1, Thm 8.2, proof of Thm 1.2) | §9 (Prop 9.1, Thm 9.2) |
 | §9 | §10 |
-| Appendices A–C | Appendices A–C (code included verbatim) |
+| Appendices A–C (code listings) | Appendices A–C (descriptions + GitHub links) |
